@@ -45,7 +45,7 @@ class FHDSChip extends StatelessWidget {
     }
 
     return ActionChip(
-      label: FHDSText.forChip(
+      label: FHDSText.onChip(
         label,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,

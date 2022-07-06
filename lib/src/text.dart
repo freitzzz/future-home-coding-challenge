@@ -1,4 +1,5 @@
 import 'package:fhds/fhds.dart';
+import 'package:fhds/src/colors.dart';
 import 'package:flutter/material.dart';
 
 class FHDSText extends StatelessWidget {
@@ -21,7 +22,7 @@ class FHDSText extends StatelessWidget {
     this.iconSize,
   });
 
-  const FHDSText.forChip(
+  const FHDSText.onChip(
     final String text, {
     Key? key,
     FHDSIcons? prefixIcon,
@@ -34,6 +35,35 @@ class FHDSText extends StatelessWidget {
           suffixIcon: suffixIcon,
           textStyle: const TextStyle(
             fontSize: kTextSizeOnChip,
+          ),
+        );
+
+  const FHDSText.onWarning(
+    final String text, {
+    Key? key,
+  }) : this(
+          text,
+          key: key,
+          iconSize: kIconSize,
+          prefixIcon: FHDSIcons.exclamation,
+          textStyle: const TextStyle(
+            color: FHDSColors.warning,
+            fontSize: kTextSize,
+            fontWeight: FontWeight.w600,
+          ),
+        );
+
+  const FHDSText.onPanel(
+    final String text,
+    final FHDSIcons? prefixIcon, {
+    Key? key,
+  }) : this(
+          text,
+          key: key,
+          iconSize: kIconSize,
+          textStyle: const TextStyle(
+            fontSize: kTextSize,
+            fontWeight: FontWeight.w600,
           ),
         );
 
@@ -63,7 +93,10 @@ class FHDSText extends StatelessWidget {
             ),
         ],
       ),
-      style: textStyle,
+      style: textStyle ??
+          const TextStyle(
+            fontSize: kTextSize,
+          ),
     );
   }
 }
