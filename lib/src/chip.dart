@@ -45,11 +45,14 @@ class FHDSChip extends StatelessWidget {
     }
 
     return ActionChip(
-      label: Text(label),
-      avatar: Icon(prefixIcon, size: 10.0),
+      label: FHDSText.forChip(
+        label,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+      ),
+      avatar: Icon(prefixIcon),
       onPressed: onPressed,
       backgroundColor: colorScheme?.background,
-      labelStyle: const TextStyle(fontSize: 11.0),
       side: colorScheme != null
           ? BorderSide(
               color: colorScheme.onBackground,
