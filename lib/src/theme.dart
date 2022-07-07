@@ -40,6 +40,7 @@ final fhdsLightTheme = ThemeData(
         Radius.circular(25.0),
       ),
     ),
+    labelPadding: EdgeInsets.zero,
     padding: EdgeInsets.fromLTRB(10.0, 4.0, 10.0, 5.0),
   ),
 );
@@ -60,6 +61,7 @@ final fhdsDarkTheme = ThemeData(
         Radius.circular(25.0),
       ),
     ),
+    labelPadding: EdgeInsets.zero,
     padding: EdgeInsets.fromLTRB(10.0, 4.0, 10.0, 5.0),
   ),
 );

@@ -40,21 +40,31 @@ class FHDSChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return ActionChip(
-      label: FHDSText.onChip(
-        label,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
-        color: secondary ? colorScheme.onBackground : colorScheme.onPrimary,
+    return ConstrainedBox(
+      constraints: const BoxConstraints.tightFor(
+        height: kChipHeight,
       ),
-      onPressed: onPressed,
-      backgroundColor: secondary ? colorScheme.background : colorScheme.primary,
-      side: secondary
-          ? BorderSide(
-              color: colorScheme.onBackground,
-              style: BorderStyle.solid,
-            )
-          : null,
+      child: ActionChip(
+        label: Align(
+          alignment: Alignment.topCenter,
+          widthFactor: 1.0,
+          child: FHDSText.onChip(
+            label,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            color: secondary ? colorScheme.onBackground : colorScheme.onPrimary,
+          ),
+        ),
+        onPressed: onPressed,
+        backgroundColor:
+            secondary ? colorScheme.background : colorScheme.primary,
+        side: secondary
+            ? BorderSide(
+                color: colorScheme.onBackground,
+                style: BorderStyle.solid,
+              )
+            : null,
+      ),
     );
   }
 }
