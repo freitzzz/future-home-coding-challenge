@@ -22,19 +22,22 @@ class FHDSText extends StatelessWidget {
     this.iconSize,
   });
 
-  const FHDSText.onChip(
+  FHDSText.onChip(
     final String text, {
     Key? key,
     FHDSIcons? prefixIcon,
     FHDSIcons? suffixIcon,
+    Color? color,
   }) : this(
           text,
           key: key,
           iconSize: kIconSizeOnChip,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          textStyle: const TextStyle(
+          textStyle: TextStyle(
+            color: color,
             fontSize: kTextSizeOnChip,
+            fontWeight: FontWeight.bold,
           ),
         );
 
@@ -75,20 +78,34 @@ class FHDSText extends StatelessWidget {
         children: [
           if (prefixIcon != null)
             WidgetSpan(
-              child: Icon(
-                prefixIcon,
-                size: iconSize,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  right: kSpacingBetweenTextAndIcon,
+                ),
+                child: Icon(
+                  prefixIcon,
+                  size: iconSize,
+                  color: textStyle?.color,
+                ),
               ),
+              alignment: PlaceholderAlignment.middle,
             ),
           TextSpan(
             text: text,
           ),
           if (suffixIcon != null)
             WidgetSpan(
-              child: Icon(
-                suffixIcon,
-                size: iconSize,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: kSpacingBetweenTextAndIcon,
+                ),
+                child: Icon(
+                  suffixIcon,
+                  size: iconSize,
+                  color: textStyle?.color,
+                ),
               ),
+              alignment: PlaceholderAlignment.middle,
             ),
         ],
       ),

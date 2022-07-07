@@ -38,22 +38,18 @@ class FHDSChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorScheme? colorScheme;
-
-    if (secondary) {
-      colorScheme = Theme.of(context).colorScheme;
-    }
+    final colorScheme = Theme.of(context).colorScheme;
 
     return ActionChip(
       label: FHDSText.onChip(
         label,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
+        color: secondary ? colorScheme.onBackground : colorScheme.onPrimary,
       ),
-      avatar: Icon(prefixIcon),
       onPressed: onPressed,
-      backgroundColor: colorScheme?.background,
-      side: colorScheme != null
+      backgroundColor: secondary ? colorScheme.background : colorScheme.primary,
+      side: secondary
           ? BorderSide(
               color: colorScheme.onBackground,
               style: BorderStyle.solid,
