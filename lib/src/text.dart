@@ -71,7 +71,6 @@ class FHDSText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        text: text,
         style: textStyle,
         children: [
           if (prefixIcon != null)
