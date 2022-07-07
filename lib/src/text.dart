@@ -72,7 +72,8 @@ class FHDSText extends StatelessWidget {
           text,
           textAlign: textAlign,
           key: key,
-          iconSize: kIconSize,
+          iconSize: kIconSizeOnPanel,
+          prefixIcon: prefixIcon,
           textStyle: const TextStyle(
             fontSize: kTextSize,
             fontWeight: FontWeight.w600,
