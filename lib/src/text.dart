@@ -57,8 +57,8 @@ class FHDSText extends StatelessWidget {
         );
 
   const FHDSText.onPanel(
-    final String text,
-    final FHDSIcons? prefixIcon, {
+    final String text, {
+    final FHDSIcons? prefixIcon,
     Key? key,
   }) : this(
           text,
@@ -72,9 +72,14 @@ class FHDSText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appliedTextStyle = textStyle ??
+        const TextStyle(
+          fontSize: kTextSize,
+        );
+
     return Text.rich(
       TextSpan(
-        style: textStyle,
+        style: appliedTextStyle,
         children: [
           if (prefixIcon != null)
             WidgetSpan(
@@ -85,7 +90,7 @@ class FHDSText extends StatelessWidget {
                 child: Icon(
                   prefixIcon,
                   size: iconSize,
-                  color: textStyle?.color,
+                  color: appliedTextStyle.color,
                 ),
               ),
               alignment: PlaceholderAlignment.middle,
@@ -102,17 +107,14 @@ class FHDSText extends StatelessWidget {
                 child: Icon(
                   suffixIcon,
                   size: iconSize,
-                  color: textStyle?.color,
+                  color: appliedTextStyle.color,
                 ),
               ),
               alignment: PlaceholderAlignment.middle,
             ),
         ],
       ),
-      style: textStyle ??
-          const TextStyle(
-            fontSize: kTextSize,
-          ),
+      style: appliedTextStyle,
     );
   }
 }
