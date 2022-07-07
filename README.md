@@ -31,7 +31,7 @@ After grabbing the main requirements, I've decided to analyze the UI that has be
 After looking into every element, I've decided to note each unique element to then translate it as a widget. Using the Material Design terminology, I can see that there are:
 
 - **Chips**, that can have text, prefix and suffix icons and may have alternate colors;
-- **Cards**, that can be expanded/collapsed;
-- **Panel**, or a general purpose container that composes several cards within a context;
+- **Expansion Tiles**, that can be expanded/collapsed;
+- **Panel**, or a general purpose container that composes several expansion tiles within a context;
 - **Custom icons**;
 - And **text**, that can have prefix icons, different colors and be copied.

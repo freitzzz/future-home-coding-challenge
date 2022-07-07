@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const homeRoute = 'home';
 const designFileRoute = 'design-file';
 const designSystemRoute = 'design-system';
-const designSystemCardsRoute = 'design-system/cards';
+const designSystemExpansionTilesRoute = 'design-system/expansion-tiles';
 const designSystemChipsRoute = 'design-system/chips';
 const designSystemIconsRoute = 'design-system/icons';
 const designSystemPanelsRoute = 'design-system/panels';
@@ -48,14 +48,14 @@ class DesignSystemRoute extends MaterialPageRoute {
         );
 }
 
-class DesignSystemCardsRoute extends MaterialPageRoute {
-  DesignSystemCardsRoute()
+class DesignSystemExpansionTilesRoute extends MaterialPageRoute {
+  DesignSystemExpansionTilesRoute()
       : super(
           builder: (context) {
-            return const DesignSystemCardsView();
+            return const DesignSystemExpansionTilesView();
           },
           settings: const RouteSettings(
-            name: designSystemCardsRoute,
+            name: designSystemExpansionTilesRoute,
           ),
         );
 }
@@ -119,8 +119,8 @@ RouteFactory onGenerateRoute() {
         return DesignFileRoute();
       case designSystemRoute:
         return DesignSystemRoute();
-      case designSystemCardsRoute:
-        return DesignSystemCardsRoute();
+      case designSystemExpansionTilesRoute:
+        return DesignSystemExpansionTilesRoute();
       case designSystemChipsRoute:
         return DesignSystemChipsRoute();
       case designSystemIconsRoute:

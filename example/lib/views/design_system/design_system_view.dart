@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 const _showcaseWidgets = <String, NavigatorCallback>{
   'Chips': navigateToDesignSystemChips,
-  'Cards': navigateToDesignSystemCards,
+  'Expansion Tiles': navigateToDesignSystemExpansionTiles,
   'Panel': navigateToDesignSystemPanels,
   'Custom Icons': navigateToDesignSystemIcons,
   'Text': navigateToDesignSystemText,

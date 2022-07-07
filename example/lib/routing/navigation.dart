@@ -11,8 +11,8 @@ Future<void> navigateToDesignFile(final BuildContext context) {
   return Navigator.of(context).pushNamed(designFileRoute);
 }
 
-Future<void> navigateToDesignSystemCards(final BuildContext context) {
-  return Navigator.of(context).pushNamed(designSystemCardsRoute);
+Future<void> navigateToDesignSystemExpansionTiles(final BuildContext context) {
+  return Navigator.of(context).pushNamed(designSystemExpansionTilesRoute);
 }
 
 Future<void> navigateToDesignSystemChips(final BuildContext context) {

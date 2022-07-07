@@ -7,6 +7,8 @@ class FHDSText extends StatelessWidget {
 
   final TextStyle? textStyle;
 
+  final TextAlign? textAlign;
+
   final FHDSIcons? prefixIcon;
 
   final FHDSIcons? suffixIcon;
@@ -17,6 +19,7 @@ class FHDSText extends StatelessWidget {
     this.text, {
     super.key,
     this.textStyle,
+    this.textAlign,
     this.prefixIcon,
     this.suffixIcon,
     this.iconSize,
@@ -25,11 +28,13 @@ class FHDSText extends StatelessWidget {
   FHDSText.onChip(
     final String text, {
     Key? key,
+    TextAlign? textAlign,
     FHDSIcons? prefixIcon,
     FHDSIcons? suffixIcon,
     Color? color,
   }) : this(
           text,
+          textAlign: textAlign,
           key: key,
           iconSize: kIconSizeOnChip,
           prefixIcon: prefixIcon,
@@ -44,8 +49,10 @@ class FHDSText extends StatelessWidget {
   const FHDSText.onWarning(
     final String text, {
     Key? key,
+    final TextAlign? textAlign,
   }) : this(
           text,
+          textAlign: textAlign,
           key: key,
           iconSize: kIconSize,
           prefixIcon: FHDSIcons.exclamation,
@@ -58,15 +65,31 @@ class FHDSText extends StatelessWidget {
 
   const FHDSText.onPanel(
     final String text, {
-    final FHDSIcons? prefixIcon,
     Key? key,
+    final TextAlign? textAlign,
+    final FHDSIcons? prefixIcon,
   }) : this(
           text,
+          textAlign: textAlign,
           key: key,
           iconSize: kIconSize,
           textStyle: const TextStyle(
             fontSize: kTextSize,
             fontWeight: FontWeight.w600,
+          ),
+        );
+
+  const FHDSText.onExpansionTile(
+    final String text, {
+    Key? key,
+    final TextAlign? textAlign,
+  }) : this(
+          text,
+          textAlign: textAlign,
+          key: key,
+          textStyle: const TextStyle(
+            fontSize: kTextSizeOnExpansionTile,
+            fontWeight: FontWeight.bold,
           ),
         );
 
@@ -114,6 +137,7 @@ class FHDSText extends StatelessWidget {
             ),
         ],
       ),
+      textAlign: textAlign,
       style: appliedTextStyle,
     );
   }

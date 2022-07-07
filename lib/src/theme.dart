@@ -43,6 +43,15 @@ final fhdsLightTheme = ThemeData(
     labelPadding: EdgeInsets.zero,
     padding: EdgeInsets.fromLTRB(10.0, 4.0, 10.0, 5.0),
   ),
+  expansionTileTheme: const ExpansionTileThemeData(
+    tilePadding: EdgeInsets.symmetric(
+      horizontal: 10.0,
+    ),
+    childrenPadding: EdgeInsets.symmetric(
+      horizontal: 10.0,
+      vertical: 10.0,
+    ),
+  ),
 );
 
 final fhdsDarkTheme = ThemeData(
@@ -63,5 +72,14 @@ final fhdsDarkTheme = ThemeData(
     ),
     labelPadding: EdgeInsets.zero,
     padding: EdgeInsets.fromLTRB(10.0, 4.0, 10.0, 5.0),
+  ),
+  expansionTileTheme: const ExpansionTileThemeData(
+    tilePadding: EdgeInsets.symmetric(
+      horizontal: 10.0,
+    ),
+    childrenPadding: EdgeInsets.symmetric(
+      horizontal: 10.0,
+      vertical: 10.0,
+    ),
   ),
 );

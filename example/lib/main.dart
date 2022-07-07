@@ -16,7 +16,7 @@ class ExampleApp extends StatelessWidget {
     return MaterialApp(
       title: 'Future Home',
       theme: fhdsLightTheme,
-      darkTheme: fhdsDarkTheme,
+      darkTheme: fhdsLightTheme,
       onGenerateInitialRoutes: onGenerateInitialRoutes(),
       onGenerateRoute: onGenerateRoute(),
       initialRoute: initialRoute,
