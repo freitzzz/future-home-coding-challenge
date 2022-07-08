@@ -22,7 +22,7 @@ class FHDSText extends StatelessWidget {
     this.textAlign,
     this.prefixIcon,
     this.suffixIcon,
-    this.iconSize,
+    this.iconSize = kIconSize,
   });
 
   FHDSText.onChip(
