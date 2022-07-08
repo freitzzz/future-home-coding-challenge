@@ -63,7 +63,7 @@ class FHDSChip extends StatelessWidget {
                 color: colorScheme.onBackground,
                 style: BorderStyle.solid,
               )
-            : null,
+            : BorderSide.none,
       ),
     );
   }

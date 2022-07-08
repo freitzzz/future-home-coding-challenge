@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:fhds/fhds.dart';
 import 'package:fhds/src/colors.dart';
 import 'package:flutter/material.dart';
 
-class FHDSExpansionTile extends StatelessWidget {
+class FHDSExpansionTile extends StatefulWidget {
   final List<FHDSText> title;
 
   final Map<String, FHDSText> content;
@@ -26,8 +28,45 @@ class FHDSExpansionTile extends StatelessWidget {
   });
 
   @override
+  State<FHDSExpansionTile> createState() => _FHDSExpansionTileState();
+}
+
+class _FHDSExpansionTileState extends State<FHDSExpansionTile>
+    with SingleTickerProviderStateMixin {
+  static final Animatable<double> _easeInTween = CurveTween(
+    curve: Curves.easeIn,
+  );
+
+  static final Animatable<double> _halfTween = Tween<double>(
+    begin: 0.0,
+    end: 0.5,
+  );
+
+  late AnimationController _controller;
+
+  late Animation<double> _iconTurns;
+
+  late bool _isExpanded;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+
+    _iconTurns = _controller.drive(_halfTween.chain(_easeInTween));
+
+    _isExpanded = widget.expanded;
+
+    if (_isExpanded) _controller.value = 1.0;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final labelWithLeastCharacters = (content.keys.toList()
+    final labelWithLeastCharacters = (widget.content.keys.toList()
           ..sort(
             (a, b) => a.length.compareTo(b.length),
           ))
@@ -43,19 +82,39 @@ class FHDSExpansionTile extends StatelessWidget {
         ),
       ),
       child: ExpansionTile(
-        initiallyExpanded: expanded,
-        onExpansionChanged: onExpansionChanged,
-        maintainState: true,
-        trailing: const Icon(
-          FHDSIcons.up,
-          size: kExpansionIconSize,
+        initiallyExpanded: widget.expanded,
+        onExpansionChanged: (value) {
+          setState(
+            () {
+              _isExpanded = value;
+
+              if (_isExpanded) {
+                _controller.forward();
+              } else {
+                _controller.reverse();
+              }
+            },
+          );
+
+          widget.onExpansionChanged(value);
+        },
+        maintainState: false,
+        trailing: RotationTransition(
+          turns: _iconTurns,
+          child: Transform.rotate(
+            angle: -pi,
+            child: const Icon(
+              FHDSIcons.up,
+              size: kExpansionIconSize,
+            ),
+          ),
         ),
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text.rich(
             TextSpan(
               children: [
-                for (final text in title) ...[
+                for (final text in widget.title) ...[
                   WidgetSpan(
                     child: text,
                     alignment: PlaceholderAlignment.middle,
@@ -71,7 +130,7 @@ class FHDSExpansionTile extends StatelessWidget {
           ),
         ),
         children: [
-          for (final info in content.entries)
+          for (final info in widget.content.entries)
             Align(
               alignment: Alignment.centerLeft,
               child: Text.rich(
@@ -106,12 +165,12 @@ class FHDSExpansionTile extends StatelessWidget {
             children: [
               Wrap(
                 spacing: kSpacingBetweenExpansionTileActions,
-                children: primaryActions,
+                children: widget.primaryActions,
               ),
-              if (secondaryActions.isNotEmpty) const Spacer(),
+              if (widget.secondaryActions.isNotEmpty) const Spacer(),
               Wrap(
                 spacing: kSpacingBetweenExpansionTileActions,
-                children: secondaryActions,
+                children: widget.secondaryActions,
               ),
             ],
           ),
