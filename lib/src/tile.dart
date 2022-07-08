@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:fhds/fhds.dart';
 import 'package:fhds/src/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class FHDSExpansionTile extends StatefulWidget {
   final List<FHDSText> title;
@@ -161,18 +162,37 @@ class _FHDSExpansionTileState extends State<FHDSExpansionTile>
           const SizedBox(
             height: kSpacingBetweenExpansionTileContentAndActions,
           ),
-          Row(
-            children: [
-              Wrap(
-                spacing: kSpacingBetweenExpansionTileActions,
-                children: widget.primaryActions,
-              ),
-              if (widget.secondaryActions.isNotEmpty) const Spacer(),
-              Wrap(
-                spacing: kSpacingBetweenExpansionTileActions,
-                children: widget.secondaryActions,
-              ),
-            ],
+          ResponsiveBuilder(
+            builder: (context, sizingInformation) {
+              switch (sizingInformation.refinedSize) {
+                case RefinedSize.small:
+                case RefinedSize.normal:
+                  return Row(
+                    children: [
+                      Wrap(
+                        spacing: kSpacingBetweenExpansionTileActions,
+                        children: widget.primaryActions,
+                      ),
+                      if (widget.secondaryActions.isNotEmpty) const Spacer(),
+                      Wrap(
+                        spacing: kSpacingBetweenExpansionTileActions,
+                        children: widget.secondaryActions,
+                      ),
+                    ],
+                  );
+
+                case RefinedSize.large:
+                case RefinedSize.extraLarge:
+                default:
+                  return Wrap(
+                    spacing: kSpacingBetweenExpansionTileActions,
+                    children: [
+                      ...widget.primaryActions,
+                      ...widget.secondaryActions,
+                    ],
+                  );
+              }
+            },
           ),
         ],
       ),
