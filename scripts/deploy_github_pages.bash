@@ -10,9 +10,9 @@ DEPLOY_COMMIT_MESSAGE="arteiro best konichua bonks welele"
 
 cd $REPO_TO_BUILD_APP_PATH
 
-cd -
-
 $FLUTTER_COMMAND_ALIAS build web --release --web-renderer html
+
+cd -
 
 cp -R $REPO_TO_BUILD_APP_PATH/build/web/* $GP_REPO_PATH
 
