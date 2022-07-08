@@ -35,3 +35,23 @@ After looking into every element, I've decided to note each unique element to th
 - **Panel**, or a general purpose container that composes several expansion tiles within a context;
 - **Custom icons**;
 - And **text**, that can have prefix icons, different colors and be copied.
+
+## Demo
+
+**Web**
+
+https://user-images.githubusercontent.com/26190214/177897445-33fd88a1-dd8b-48cb-bf9d-555f416d7577.mov
+
+**iPad Air**
+
+https://user-images.githubusercontent.com/26190214/177897471-2e7fd1b8-edaa-4d01-884d-5506b4f630fe.mp4
+
+## Improvements
+
+Had issues exporting icons from Figma (used Icomoon for translating `.svg` to `.ttf`), which left some icons to not be fully rendered. The content text in the expansion tiles widgets are also not aligned, which doesn't exactly match the proposed design.
+
+## Try it
+
+You can try the example application right away on the web:
+
+http://oshanu.art/future-home-live/
