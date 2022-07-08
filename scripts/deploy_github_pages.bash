@@ -18,10 +18,10 @@ cp -R $REPO_TO_BUILD_APP_PATH/build/web/* $GP_REPO_PATH
 
 cd $GP_REPO_PATH
 
-cd -
-
 git add .
 
 git commit -m "$DEPLOY_COMMIT_MESSAGE"
 
 git push
+
+cd -
